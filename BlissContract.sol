@@ -64,7 +64,7 @@ contract ERC20 is ERC20Basic {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-contract BlissToken is ERC20 {
+contract BlissExchangeToken is ERC20 {
     
     using SafeMath for uint256;
     address owner = msg.sender;
@@ -72,7 +72,7 @@ contract BlissToken is ERC20 {
     mapping (address => uint256) balances;
     mapping (address => mapping (address => uint256)) allowed;    
 
-    string public constant name = "Bliss Token";
+    string public constant name = "Bliss Exchange Token";
     string public constant symbol = "BLISS";
     uint public constant decimals = 8;
     
@@ -106,11 +106,7 @@ contract BlissToken is ERC20 {
     }
     
     
-    function BlissToken () public {
-        owner = msg.sender;
-        uint256 devTokens = 0e8;
-        distr(owner, devTokens);
-    }
+    
     
     function transferOwnership(address newOwner) onlyOwner public {
         if (newOwner != address(0)) {
